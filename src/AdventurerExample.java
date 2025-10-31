@@ -73,7 +73,7 @@ public class AdventurerExample {
      * Creates a map where the key is a Skill and the value is the number of adventurers that are proficient in that skill.
      *
      * @param guilds
-     * @return A new Map<String, Long> where the keys are the skill names and the values are the number of adventurers that are proficient in said skill.
+     * @return A new Map where the keys are the skill names and the values are the number of adventurers that are proficient in said skill.
      */
     public static Map<String, Long> skillWiseAdventurerCount(List<Guild> guilds) {
 
