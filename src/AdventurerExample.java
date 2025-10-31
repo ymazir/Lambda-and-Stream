@@ -105,10 +105,4 @@ public class AdventurerExample {
                flatMap(g -> g.getAdventureres().stream())                                        // Flattens the stream of guilds into a stream of adventurers
                .forEach(adventurer -> System.out.println(adventurer.getName() + ": " + adventurer.getGoldEarned())); // Prints each adventurer's name and their updated gold earned
     }
-
-
-
-
-
-
 }
