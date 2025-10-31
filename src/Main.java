@@ -25,9 +25,8 @@ public class Main {
 
         for (Guild guild : sortedByAverageAgeListGuilds) {
 
-            System.out.println(guild + " " + getAverageAge(guild));
+            System.out.println("Guild: " + guild.getName() + " , Average Age: " + getAverageAge(guild));
         }
-
 
         System.out.println(AdventurerExample.skillWiseAdventurerCount(List.of(guild1, guild2)));
 
