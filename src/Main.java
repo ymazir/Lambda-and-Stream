@@ -25,9 +25,9 @@ public class Main {
 
         List<Guild> sortedByAverageAgeListGuilds = AdventurerExample.rankGuildsByAverageAdventurerAge(List.of(guild1, guild2)); // Testing rankGuildsByAverageAdventurerAge method. Ranks guilds by average age of their adventurers.
 
-        System.out.println(AdventurerExample.skillWiseAdventurerCount(List.of(guild1, guild2)));
+        System.out.println(AdventurerExample.skillWiseAdventurerCount(List.of(guild1, guild2)));  // Testing skillWiseAdventurerCount method. Counts adventurers for each skill.
 
-        AdventurerExample.goldBonusEvent(List.of(guild1, guild2));
+        AdventurerExample.goldBonusEvent(List.of(guild1, guild2)); // Testing goldBonusEvent method. Increases gold earned by each adventurer by 10%.
 
     }
 
