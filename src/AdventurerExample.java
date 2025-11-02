@@ -37,7 +37,6 @@ public class AdventurerExample {
         return groups;                                                          // Returns the map of grouped adventurers
     }
 
-
     /**
      * Finds the adventurer with the highest number of skills across all guilds.
      *
@@ -59,13 +58,20 @@ public class AdventurerExample {
      */
     public static List<Guild> rankGuildsByAverageAdventurerAge(List<Guild> guilds) {
 
-        return guilds.stream()                                              // Starts the stream
+        List<Guild> temp = guilds.stream()                                              // Starts the stream
                 .sorted(Comparator                                          // Sorts the stream by a comparator were about to give it
                         .comparingDouble(g -> g.getAdventureres().stream()  // Comparing by double, but first get reach guild and make a stream of all of its adventurers
                         .mapToInt(Adventurer::getAge)                       // Maps each adventurer to their age as an int
                         .average()                                          // Gets the average of the ages in the stream
                         .orElse(0)))                                  // The whole thing breaks if this isnt here fuck this stupid thing bro its just a default to 0
                 .collect(Collectors.toList());                              // Collects the sorted stream of guilds into a new list then returns
+
+        // Basic foreach loop to print the list of guilds in order as well as their average age before returning. Uses helper method getAverageAge.
+        for (Guild guild : temp ) {
+            System.out.println("Guild name: " + guild.getName() + " | Average age: " + getAverageAge(guild));
+        }
+
+        return temp;                                                        // Returning the completed stream
 
     }
 
@@ -89,7 +95,6 @@ public class AdventurerExample {
         return temp;                                                                    // Returns the map of skills and their corresponding adventurer counts.
     }
 
-
     /**
      * Applies a gold bonus event where adventurers with less than 1000 gold earned receive a 20% bonus.
      *
@@ -104,5 +109,19 @@ public class AdventurerExample {
        guilds.stream().                                                                          // Starts the stream again to print the updated gold earned for all adventurers
                flatMap(g -> g.getAdventureres().stream())                                        // Flattens the stream of guilds into a stream of adventurers
                .forEach(adventurer -> System.out.println(adventurer.getName() + ": " + adventurer.getGoldEarned())); // Prints each adventurer's name and their updated gold earned
+    }
+
+    /**
+     * Helper method to calculate the average age of adventurers in a guild.
+     *
+     * @param guild The guild whose adventurers' average age is to be calculated.
+     * @return The average age of the adventurers in the guild.
+     */
+    public static int getAverageAge(Guild guild) {
+        int counter = 0;
+        for (Adventurer adv : guild.getAdventureres()) {
+            counter += adv.getAge();
+        }
+        return counter / guild.getAdventureres().size();
     }
 }
